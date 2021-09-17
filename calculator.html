@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>calculator</title>
+    <script
+      src="https://kit.fontawesome.com/7d2012bec3.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap");
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      background-color: #ecf0f3;
+      font-family: sans-serif;
+    }
+    .container {
+      height: 100vh;
+      background: linear-gradient(
+        to top,
+        rgb(113, 236, 252),
+        rgb(238, 42, 74)
+      );
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .calculator {
+      background-color: #ecf0f3;
+      padding: 15px;
+      border-radius: 30px;
+      box-shadow: inset 5px 5px 12px #eef5fa, 5px 5px 12px rgba(0, 0, 0, 0.16);
+      display: grid;
+      grid-template-columns: repeat(4, 80px);
+    }
+    input {
+      grid-column: span 4;
+      height: 70px;
+      border-color: #fff;
+      box-shadow: inset -5px -5px 12px rgb(245, 232, 232),
+        5px 5px 12px rgba(0, 0, 0, 0.16);
+      border-radius: 30px;
+      border: none;
+      color: rgba(70, 70, 70);
+      font-size: 50px;
+      text-align: end;
+      margin-top: 40px;
+      margin-bottom: 30px;
+      padding: 20px;
+    }
+    button {
+      margin: 3px;
+      height: 4em;
+      width: 4em;
+      background-color: #fff;
+      box-shadow: -5px -5px 12px rgb(243, 232, 232),
+        5px 5px 12px rgba(0, 0, 0, 0.16);
+      border-radius: 50%;
+      border: none;
+      font-size: 15px;
+    }
+    .equal {
+      width: 140px;
+      border-radius: 40px;
+      background-color: #ecf0f3;
+    }
+    .header {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 3em;
+      /* background: linear-gradient(
+        120deg,
+        rgb(113, 236, 252),
+        rgb(231, 30, 63),
+        rgb(113, 236, 252)
+      ); */
+      font-family: "Fredoka One", cursive;
+      letter-spacing: 8px;
+    }
+  </style>
+  <body>
+    <h1 class="header">New Calculater<i class="fas fa-calculator"></i></h1>
+    <div class="container">
+      <div class="calculator">
+        <input type="text" placeholder="0" id="output-screen" />
+        <button onclick="clean()">cl</button>
+        <button onclick="del()">DEL</button>
+        <button onclick="display('%')">%</button>
+        <button onclick="display('/')">/</button>
+        <button onclick="display('7')">7</button>
+        <button onclick="display('8')">8</button>
+        <button onclick="display('9')">9</button>
+        <button onclick="display('*')">*</button>
+        <button onclick="display('4')">4</button>
+        <button onclick="display('5')">5</button>
+        <button onclick="display('6')">6</button>
+        <button onclick="display('-')">-</button>
+        <button onclick="display('1')">1</button>
+        <button onclick="display('2')">2</button>
+        <button onclick="display('3')">3</button>
+        <button onclick="display('+')">+</button>
+        <button onclick="display('.')">.</button>
+        <button onclick="display('0')">0</button>
+        <button onclick="calculate()" class="equal">=</button>
+      </div>
+    </div>
+    <!--script-part-->
+    <script>
+      var outputscreen = document.getElementById("output-screen");
+      display = (num) => {
+        outputscreen.value += num;
+      };
+      calculate = () => {
+        try {
+          outputscreen.value = eval(outputscreen.value);
+        } catch {
+          alert("invalid");
+        }
+      };
+      clean = () => {
+        outputscreen.value = "";
+      };
+      del = () => {
+        outputscreen.value = outputscreen.value.slice(0, -1);
+      };
+    </script>
+  </body>
+</html>
